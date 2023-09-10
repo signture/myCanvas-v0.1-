@@ -1,5 +1,11 @@
 #include"all.h"
 
+int lines[NUM][3] = { 0 };
+float lines_k[NUM] = { 0 };
+int circles[NUM][3] = { 0 };
+int triangles[NUM][4] = { 0 };
+
+
 int main() {
     //open a window
     initgraph(640, 480); 
@@ -21,6 +27,8 @@ int main() {
         case CIRCLE:
             drawcircle();
             break;
+        case MOVE:
+            move();
         case TRIANGLE:
             drawtriangle();
         }

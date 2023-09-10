@@ -1,5 +1,11 @@
 #include"all.h"
 
+extern int lines[NUM][3];
+extern float lines_k[NUM];
+extern int circles[NUM][3];
+extern int triangles[NUM][4];
+
+
 void drawline()
 {
 	int x0, y0;
@@ -34,14 +40,17 @@ void drawline()
 
 					//remenber it in the line arrery
 					int i = 0;
-					/*while (lines[i++][0])
+					float k = 0;
+					while (lines[i][0])
 					{
+						i++;
 					}
 					lines[i][0] = x0;
 					lines[i][1] = y0;
 					lines[i][2] = x;
-					lines[i][3] = y;
-					*/
+					k = (static_cast<float>(y0) - y) / (x0 - x);
+					lines_k[i] = k;
+					
 					break;
 				}
 			}
@@ -52,9 +61,9 @@ void drawline()
 
 void drawcircle()
 {
-	float x0, y0;
-	float x, y;
-	double radius = 0;
+	int x0, y0;
+	int x, y;
+	int radius = 0;
 	int bkcolor = getbkcolor();
 	int initCircleColor = getlinecolor();
 	boolean stop_drawingcircle = false;
@@ -85,6 +94,14 @@ void drawcircle()
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					stop_drawingcircle = true;
+					int i = 0;
+					while (circles[i][0])
+					{
+						i++;
+					}
+					circles[i][0] = x0;
+					circles[i][1] = y0;
+					circles[i][2] = radius;
 					break;
 				}
 			}
@@ -121,6 +138,15 @@ void drawtriangle()
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					stop_drawtriangle = true;
+					int i = 0;
+					while (triangles[i][0])
+					{
+						i++;
+					}
+					triangles[i][0] = x0;
+					triangles[i][1] = y0;
+					triangles[i][2] = x;
+					triangles[i][3] = y;
 					break;
 				}
 			}

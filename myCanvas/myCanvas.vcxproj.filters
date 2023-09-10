@@ -24,10 +24,10 @@
     <ClCompile Include="save.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="clear.cpp">
+    <ClCompile Include="move.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="move.cpp">
+    <ClCompile Include="judge.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
