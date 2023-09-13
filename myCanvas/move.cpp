@@ -1,5 +1,5 @@
 #include "all.h"
-extern int lines[NUM][4];
+extern int lines[NUM][5];
 extern int circles[NUM][3];
 extern int triangles[NUM][4];
 
@@ -17,7 +17,7 @@ void move()
 
 	switch (sp)
 	{
-	case Line:
+	case LIne:
 		move_line(pos);
 		break;
 
@@ -75,6 +75,8 @@ void move_line(int pos)
 					lines[pos][1] = y1 + vt_y;
 					lines[pos][2] = x2 + vt_x;
 					lines[pos][3] = y2 + vt_y;
+					lines[pos][4] = 0;
+					draw();
 					stop_moveline = true;
 					break;
 				}

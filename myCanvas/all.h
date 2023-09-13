@@ -14,9 +14,31 @@
 //extern int lines[4][100] = { 0 };
 
 
+class Line {
+private:
+	int x0, y0;
+	int x, y;
+	int style = PS_SOLID;
+	float k;
+
+public:
+	boolean selected = false;
+	void draw();
+	void init_cor(int x,int y);
+	void change_cor(int x, int y);
+};
+
+class Lines
+{
+public:
+	Line* lines;
+	void init(int num);
+	void release();
+};
+
 enum Shape
 {
-	Line,Circle,Triangle,nothing
+	LIne,Circle,Triangle,nothing
 };
 
 

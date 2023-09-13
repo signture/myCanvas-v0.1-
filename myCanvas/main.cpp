@@ -1,6 +1,6 @@
 #include"all.h"
 
-int lines[NUM][4] = { 0 };
+int lines[NUM][5] = { 0 };
 int circles[NUM][3] = { 0 };
 int triangles[NUM][4] = { 0 };
 

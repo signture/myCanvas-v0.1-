@@ -1,13 +1,12 @@
 #include"all.h"
 
-extern int lines[NUM][4];
+extern int lines[NUM][5];
 extern int circles[NUM][3];
 extern int triangles[NUM][4];
 
 
 void drawline()
 {
-
 	int bkcolor = getbkcolor();
 	int initLineColor = getlinecolor();
 	boolean stop_drawline = false;				
@@ -165,6 +164,10 @@ void draw()
 
 		while (lines[i][0])
 		{
+			if (lines[i][4])
+				setlinestyle(PS_DASH);
+			else
+				setlinestyle(PS_SOLID);
 			line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);//lines_k[i] * (lines[i][2] - lines[i][0]) + lines[i][1]
 			i++;
 		}
