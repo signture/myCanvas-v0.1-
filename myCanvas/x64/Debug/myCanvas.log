@@ -1,3 +1,2 @@
-﻿  judge.cpp
-E:\ccode\myCanvas(v0.1)\myCanvas\judge.cpp(99,16): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+﻿  move.cpp
   myCanvas.vcxproj -> E:\ccode\myCanvas(v0.1)\x64\Debug\myCanvas.exe

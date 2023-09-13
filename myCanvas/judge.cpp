@@ -47,7 +47,7 @@ Shape judge(int * pos)
 			shape = judge_circle(x, y);
 			if (shape >= 0)
 			{
-				sp = Circle;
+ 				sp = Circle;
 				*pos = shape;
 				return sp;
 			}

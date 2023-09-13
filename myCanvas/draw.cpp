@@ -7,8 +7,7 @@ extern int triangles[NUM][4];
 
 void drawline()
 {
-	int x0, y0;
-	int x, y;
+
 	int bkcolor = getbkcolor();
 	int initLineColor = getlinecolor();
 	boolean stop_drawline = false;				
@@ -27,8 +26,7 @@ void drawline()
 		if (msg.uMsg == WM_LBUTTONDOWN)
 		{
 			//get the inital coordinate
-			x0 = msg.x, y0 = msg.y;
-			x = x0, y = y0;
+			lines[i][0] = msg.x, lines[i][1] = msg.y;
 			while (!stop_drawline)
 			{
 				//clean the existed line to reach the effect of animition( we cover the line with the same line but with the background clolr)
@@ -37,13 +35,10 @@ void drawline()
 				//setlinecolor(initLineColor);
 
 				msg = GetMouseMsg();
-				x = msg.x, y = msg.y;
+				lines[i][2] = msg.x, lines[i][3] = msg.y;
 				//draw a line
 				//line(x0, y0, x, y);
-				lines[i][0] = x0;
-				lines[i][1] = y0;
-				lines[i][2] = x;
-				lines[i][3] = y;
+
 				draw();
 
 				//FlushBatchDraw();
@@ -53,10 +48,6 @@ void drawline()
 					stop_drawline = true;
 					//EndBatchDraw();
 					//remenber it in the line arrery
-					lines[i][0] = x0;
-					lines[i][1] = y0;
-					lines[i][2] = x;
-					lines[i][3] = y;
 					
 					break;
 				}
@@ -89,8 +80,8 @@ void drawcircle()
 		msg = GetMouseMsg();
 		if (msg.uMsg == WM_LBUTTONDOWN)
 		{
-			x0 = msg.x, y0 = msg.y;
-			x = x0, y = y0;
+			circles[i][0] = msg.x, circles[i][1] = msg.y;
+			x0 = circles[i][0], y0 = circles[i][1];
 			while (!stop_drawingcircle)
 			{
 				//cover the circle
@@ -109,16 +100,12 @@ void drawcircle()
 				//FlushBatchDraw();
 				//circle(x0, y0, radius);
 
-				circles[i][0] = x0;
-				circles[i][1] = y0;
 				circles[i][2] = radius;
 				draw();
 
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					stop_drawingcircle = true;
-					circles[i][0] = x0;
-					circles[i][1] = y0;
 					circles[i][2] = radius;
 					break;
 				}
@@ -137,35 +124,29 @@ void drawtriangle()
 	boolean stop_drawtriangle = false;
 	MOUSEMSG msg;
 	POINT pts[3];
+	int i = 0;
+	while (triangles[i][0])
+	{
+		i++;
+	}
+
+
 
 	while (!stop_drawtriangle)
 	{
 		msg = GetMouseMsg();
 		if (msg.uMsg == WM_LBUTTONDOWN)
 		{
-			x0 = msg.x, y0 = msg.y;
-			x = x0, y = y0;
+			triangles[i][0] = msg.x, triangles[i][1] = msg.y;
 			while (!stop_drawtriangle)
 			{
 				msg = GetMouseMsg();
-				x = msg.x, y = msg.y;
-				pts[0] = { x0,y0 };
-				pts[1] = { x,y };
-				pts[2] = { 2 * x0 - x,y };
-				polygon(pts, 3);
+				triangles[i][2] = msg.x, triangles[i][3] = msg.y;
+				draw();
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					stop_drawtriangle = true;
-					int i = 0;
-					while (triangles[i][0])
-					{
-						i++;
-					}
-					triangles[i][0] = x0;
-					triangles[i][1] = y0;
-					triangles[i][2] = x;
-					triangles[i][3] = y;
-					break;
+					return;
 				}
 			}
 		}
@@ -179,6 +160,7 @@ void draw()
 	BeginBatchDraw();
 	cleardevice();
 	int i = 0;
+	POINT pts[3];
 
 
 		while (lines[i][0])
@@ -194,6 +176,14 @@ void draw()
 		}
 		i = 0;
 		//draw triangles
+		while (triangles[i][0])
+		{
+			pts[0] = { triangles[i][0],triangles[i][1] };
+			pts[1] = { triangles[i][2],triangles[i][3] };
+			pts[2] = { 2 * triangles[i][0] - triangles[i][2],triangles[i][3] };
+			polygon(pts, 3);
+			i++;
+		}
 
 		FlushBatchDraw();
 
