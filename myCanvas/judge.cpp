@@ -75,8 +75,11 @@ int judge_line(int x, int y)
 	while (lines[i][0])
 	{
 		if (x < lines[i][0] - 3 || x > lines[i][2] + 3)
+		{
+			i++;
 			continue;
-		k = (static_cast<float>(lines[i][1]) - y) / (lines[i][0] - x);;
+		}
+		k = (static_cast<float>(lines[i][1]) - y) / (lines[i][0] - x);
 		if ((y - lines[i][1]) >= (x - lines[i][0]) * k - 2 || (y - lines[i][1]) <= (x - lines[i][0]) * k + 2)
 			return i;
 		i++;
@@ -93,7 +96,7 @@ int judge_circle(int x, int y)
 
 	while (circles[i][0])
 	{
-		radius = sqrt((pow(fabs(circles[i][0] - x), 2) + (pow(fabs(circles[i][0] - y), 2))));
+		radius = sqrt((pow(fabs(circles[i][0] - x), 2) + (pow(fabs(circles[i][1] - y), 2))));
 		if (radius <= circles[i][2])
 		{
 			return i;

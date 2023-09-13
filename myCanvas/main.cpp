@@ -7,9 +7,9 @@ int triangles[NUM][4] = { 0 };
 
 int main() {
     //open a window
-    initgraph(640, 480); 
+    initgraph(840, 840); 
     //present a line of words to the button
-    RECT r = { 0,0,640,480 };
+    RECT r = { 0,0,840,840 };
     drawtext(_T("mode: 1:line 2:circle 3:triangle q:quit"), &r, DT_SINGLELINE | DT_BOTTOM);
     boolean stop_drawing = false;
     BITMAP bm;
@@ -28,10 +28,14 @@ int main() {
         case CIRCLE:
             drawcircle();
             break;
-        case MOVE:
-            move();
         case TRIANGLE:
             drawtriangle();
+            break;
+        case MOVE:
+            move();
+            break;
+        default:
+            break;
         }
     }
 

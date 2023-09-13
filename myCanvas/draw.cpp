@@ -76,6 +76,12 @@ void drawcircle()
 	boolean stop_drawingcircle = false;
 	MOUSEMSG msg;
 
+	int i = 0;
+	while (circles[i][0])
+	{
+		i++;
+	}
+
 	//BeginBatchDraw();
 
 	while (!stop_drawingcircle)
@@ -103,26 +109,14 @@ void drawcircle()
 				//FlushBatchDraw();
 				//circle(x0, y0, radius);
 
-				int i = 0;
-				//while (circles[i][0])
-				{
-					//i++;
-				}
 				circles[i][0] = x0;
 				circles[i][1] = y0;
 				circles[i][2] = radius;
 				draw();
 
-				//FlushBatchDraw();
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					stop_drawingcircle = true;
-					//EndBatchDraw();
-					int i = 0;
-					//while (circles[i][0])
-					{
-						//i++;
-					}
 					circles[i][0] = x0;
 					circles[i][1] = y0;
 					circles[i][2] = radius;
