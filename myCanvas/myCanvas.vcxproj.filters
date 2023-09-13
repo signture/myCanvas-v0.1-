@@ -21,9 +21,6 @@
     <ClCompile Include="draw.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="save.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="move.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

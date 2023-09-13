@@ -1,6 +1,5 @@
 #include "all.h"
-extern int lines[NUM][3];
-extern float lines_k[NUM];
+extern int lines[NUM][4];
 extern int circles[NUM][3];
 extern int triangles[NUM][4];
 
@@ -32,7 +31,7 @@ void move_line(int pos)
 {
 	int x1 = lines[pos][0], y1 = lines[pos][1];
 	int x2 = lines[pos][2];
-	int y2 = lines_k[pos] * (x2 - x1) + y1;
+	int y2 = lines[pos][3];
 	int x0, y0;
 	int x, y;
 	int vt_x, vt_y;

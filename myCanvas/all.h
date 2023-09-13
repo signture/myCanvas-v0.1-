@@ -2,7 +2,8 @@
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
-
+#include<wingdi.h>
+#include<Windows.h>
 
 #define LINE '1'
 #define CIRCLE '2'
@@ -24,3 +25,4 @@ void drawcircle();
 void drawtriangle();
 Shape judge(int* pos);
 void move();
+void draw();

@@ -1,7 +1,6 @@
 #include"all.h"
 
-extern int lines[NUM][3];
-extern float lines_k[NUM];
+extern int lines[NUM][4];
 extern int circles[NUM][3];
 extern int triangles[NUM][4];
 
@@ -12,8 +11,16 @@ void drawline()
 	int x, y;
 	int bkcolor = getbkcolor();
 	int initLineColor = getlinecolor();
-	boolean stop_drawline = false;
+	boolean stop_drawline = false;				
+	int i = 0;
+
+	while (lines[i][0])
+	{
+		i++;
+	}
 	
+	//BeginBatchDraw();
+
 	while (!stop_drawline)
 	{
 		MOUSEMSG msg = GetMouseMsg();
@@ -25,31 +32,31 @@ void drawline()
 			while (!stop_drawline)
 			{
 				//clean the existed line to reach the effect of animition( we cover the line with the same line but with the background clolr)
-				setlinecolor(bkcolor);
-				line(x0, y0, x, y);
-				setlinecolor(initLineColor);
+				//setlinecolor(bkcolor);
+				//line(x0, y0, x, y);
+				//setlinecolor(initLineColor);
 
 				msg = GetMouseMsg();
 				x = msg.x, y = msg.y;
 				//draw a line
-				line(x0, y0, x, y);
+				//line(x0, y0, x, y);
+				lines[i][0] = x0;
+				lines[i][1] = y0;
+				lines[i][2] = x;
+				lines[i][3] = y;
+				draw();
+
+				//FlushBatchDraw();
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					//present the final line
 					stop_drawline = true;
-
+					//EndBatchDraw();
 					//remenber it in the line arrery
-					int i = 0;
-					float k = 0;
-					while (lines[i][0])
-					{
-						i++;
-					}
 					lines[i][0] = x0;
 					lines[i][1] = y0;
 					lines[i][2] = x;
-					k = (static_cast<float>(y0) - y) / (x0 - x);
-					lines_k[i] = k;
+					lines[i][3] = y;
 					
 					break;
 				}
@@ -69,6 +76,8 @@ void drawcircle()
 	boolean stop_drawingcircle = false;
 	MOUSEMSG msg;
 
+	//BeginBatchDraw();
+
 	while (!stop_drawingcircle)
 	{
 		msg = GetMouseMsg();
@@ -81,23 +90,38 @@ void drawcircle()
 				//cover the circle
 				//clearcircle(x0, y0, radius); //This method can only cover the circle while you are pulling it make it bigger but can not cover those smaller
 				//it will not only cover the circle but also cover the line or other thing besides
-				setcolor(bkcolor);
-				circle(x0, y0, radius);
-				setcolor(initCircleColor);
+
+				//setcolor(bkcolor);
+				//circle(x0, y0, radius);
+				//setcolor(initCircleColor);
 				 
 
 				//draw a circle
 				msg = GetMouseMsg();
 				x = msg.x, y = msg.y;
 				radius = sqrt((pow(fabs(x0 - x), 2) + (pow(fabs(y0 - y),2))));
-				circle(x0, y0, radius);
+				//FlushBatchDraw();
+				//circle(x0, y0, radius);
+
+				int i = 0;
+				//while (circles[i][0])
+				{
+					//i++;
+				}
+				circles[i][0] = x0;
+				circles[i][1] = y0;
+				circles[i][2] = radius;
+				draw();
+
+				//FlushBatchDraw();
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					stop_drawingcircle = true;
+					//EndBatchDraw();
 					int i = 0;
-					while (circles[i][0])
+					//while (circles[i][0])
 					{
-						i++;
+						//i++;
 					}
 					circles[i][0] = x0;
 					circles[i][1] = y0;
@@ -153,4 +177,33 @@ void drawtriangle()
 		}
 	}
 
+}
+
+
+void draw()
+{
+	BeginBatchDraw();
+	cleardevice();
+	int i = 0;
+
+
+		while (lines[i][0])
+		{
+			line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);//lines_k[i] * (lines[i][2] - lines[i][0]) + lines[i][1]
+			i++;
+		}
+		i = 0;
+		while (circles[i][0])
+		{
+			circle(circles[i][0], circles[i][1], circles[i][2]);
+			i++;
+		}
+		i = 0;
+		//draw triangles
+
+		FlushBatchDraw();
+
+
+
+	EndBatchDraw();
 }

@@ -1,7 +1,6 @@
 #include "all.h"
 
-extern int lines[NUM][3];
-extern float lines_k[NUM];
+extern int lines[NUM][4];
 extern int circles[NUM][3];
 extern int triangles[NUM][4];
 
@@ -77,7 +76,7 @@ int judge_line(int x, int y)
 	{
 		if (x < lines[i][0] - 3 || x > lines[i][2] + 3)
 			continue;
-		k = lines_k[i];
+		k = (static_cast<float>(lines[i][1]) - y) / (lines[i][0] - x);;
 		if ((y - lines[i][1]) >= (x - lines[i][0]) * k - 2 || (y - lines[i][1]) <= (x - lines[i][0]) * k + 2)
 			return i;
 		i++;
