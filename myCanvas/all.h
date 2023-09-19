@@ -9,6 +9,8 @@
 #define CIRCLE '2'
 #define TRIANGLE '3'
 #define MOVE '4'
+#define LOAD '5'
+#define SAVE '6'
 #define QUIT 'q'
 #define NUM 10
 //extern int lines[4][100] = { 0 };
@@ -41,6 +43,11 @@ enum Shape
 	LIne,Circle,Triangle,nothing
 };
 
+enum Status
+{
+	FATAL,SUCCESS
+};
+
 
 void drawline();
 void drawcircle();
@@ -48,3 +55,5 @@ void drawtriangle();
 Shape judge(int* pos);
 void move();
 void draw();
+Status load();
+Status save();

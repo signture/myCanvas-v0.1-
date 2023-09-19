@@ -48,7 +48,7 @@ void drawline()
 					//EndBatchDraw();
 					//remenber it in the line arrery
 					
-					break;
+					return;
 				}
 			}
 		}
@@ -159,13 +159,28 @@ void draw()
 	BeginBatchDraw();
 	cleardevice();
 	int i = 0;
-	POINT pts[3];
+	POINT pts[4];
+
 
 
 		while (lines[i][0])
 		{
 			if (lines[i][4])
+			{
+				float k1 = (lines[i][2] - lines[i][0]) / (lines[i][1] - lines[i][3]);
+				int x1 = lines[i][0] - 3, y1 = lines[i][1] - k1 * 3;
+				int x2 = lines[i][0] + 3, y2 = lines[i][1] + k1 * 3;
+				int x3 = lines[i][2] - 3, y3 = lines[i][3] - k1 * 3;
+				int x4 = lines[i][2] + 3, y4 = lines[i][3] + k1 * 3;
+				pts[0] = { x1,y1 };
+				pts[1] = { x2,y2 };
+				pts[2] = { x4,y4 };
+				pts[3] = { x3,y3 };
+				setlinecolor(RED);
 				setlinestyle(PS_DASH);
+				polygon(pts, 4);
+				setlinecolor(WHITE);
+			}
 			else
 				setlinestyle(PS_SOLID);
 			line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);//lines_k[i] * (lines[i][2] - lines[i][0]) + lines[i][1]
