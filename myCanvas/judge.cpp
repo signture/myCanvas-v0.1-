@@ -1,7 +1,7 @@
 #include "all.h"
 
 extern int lines[NUM][5];
-extern int circles[NUM][3];
+extern int circles[NUM][4];
 extern int triangles[NUM][4];
 
 int judge_line(int x, int y);
@@ -51,6 +51,8 @@ Shape judge(int * pos)
 			{
  				sp = Circle;
 				*pos = shape;
+				circles[shape][3] = 1;
+				draw();
 				return sp;
 			}
 			shape = judge_triangle(x, y);

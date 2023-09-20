@@ -1,4 +1,17 @@
-﻿  fileOperation.cpp
-  move.cpp
+﻿  draw.cpp
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(98,18): warning C4244: “=”: 从“double”转换到“int”，可能丢失数据
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(119,10): warning C4101: “y0”: 未引用的局部变量
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(120,9): warning C4101: “y”: 未引用的局部变量
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(120,6): warning C4101: “x”: 未引用的局部变量
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(119,6): warning C4101: “x0”: 未引用的局部变量
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(125,8): warning C4101: “pts”: 未引用的局部变量
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(170,14): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(171,34): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(172,34): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(173,34): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+E:\ccode\myCanvas(v0.1)\myCanvas\draw.cpp(174,34): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+  fileOperation.cpp
+  main.cpp
+E:\ccode\myCanvas(v0.1)\myCanvas\main.cpp(17,12): warning C4101: “bm”: 未引用的局部变量
   正在生成代码...
   myCanvas.vcxproj -> E:\ccode\myCanvas(v0.1)\x64\Debug\myCanvas.exe

@@ -1,6 +1,6 @@
 #include "all.h"
 extern int lines[NUM][5];
-extern int circles[NUM][3];
+extern int circles[NUM][4];
 extern int triangles[NUM][4];
 
 
@@ -116,6 +116,8 @@ void move_circle(int pos)
 				if (msg.uMsg == WM_LBUTTONUP)
 				{
 					stop_movecircle = true;
+					circles[pos][3] = 0;
+					draw();
 					return;
 				}
 			}

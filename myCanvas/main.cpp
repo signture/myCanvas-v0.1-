@@ -1,7 +1,7 @@
 #include"all.h"
 
 int lines[NUM][5] = { 0 };
-int circles[NUM][3] = { 0 };
+int circles[NUM][4] = { 0 };
 int triangles[NUM][4] = { 0 };
 
 
@@ -52,7 +52,7 @@ int main() {
     //wait for click
     //_getch(); 
 
-    saveimage(_T("E:\\test.bmp"));
+    saveimage(_T("E:\\ccode\\myCanvas(v0.1)\\myCanvas\\resource\\test.bmp"));
 
     closegraph(); // 关闭图形界面 
 

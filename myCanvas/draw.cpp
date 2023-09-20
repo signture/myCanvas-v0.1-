@@ -1,7 +1,7 @@
 #include"all.h"
 
 extern int lines[NUM][5];
-extern int circles[NUM][3];
+extern int circles[NUM][4];
 extern int triangles[NUM][4];
 
 
@@ -177,18 +177,22 @@ void draw()
 				pts[2] = { x4,y4 };
 				pts[3] = { x3,y3 };
 				setlinecolor(RED);
-				setlinestyle(PS_DASH);
 				polygon(pts, 4);
 				setlinecolor(WHITE);
 			}
-			else
-				setlinestyle(PS_SOLID);
 			line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);//lines_k[i] * (lines[i][2] - lines[i][0]) + lines[i][1]
 			i++;
 		}
 		i = 0;
 		while (circles[i][0])
 		{
+			if (circles[i][3])
+			{
+				setlinecolor(RED);
+				circle(circles[i][0], circles[i][1], circles[i][2] + 2);
+				circle(circles[i][0], circles[i][1], circles[i][2] - 2);
+				setlinecolor(WHITE);
+			}
 			circle(circles[i][0], circles[i][1], circles[i][2]);
 			i++;
 		}

@@ -1,7 +1,7 @@
 #include "all.h"
 
 extern int lines[NUM][5];
-extern int circles[NUM][3];
+extern int circles[NUM][4];
 extern int triangles[NUM][4];
 
 
@@ -12,12 +12,12 @@ Status load()
 {
 	Status st = FATAL;
 	FILE* fp;
-	errno_t err = fopen_s(&fp,"test.txt", "r");
+	errno_t err = fopen_s(&fp,"resource/test.txt", "r");
 	if (fp == NULL)
 		return st;
 	for (int i = 0; i < 10; i++)
 	{
-		fscanf_s(fp, "%d %d %d %d %d %d %d %d %d %d %d %d\n", &lines[i][0], &lines[i][1], &lines[i][2], &lines[i][3], &lines[i][4], &circles[i][0], &circles[i][1], &circles[i][2], &triangles[i][0], &triangles[i][1], &triangles[i][2], &triangles[i][3]);
+		fscanf_s(fp, "%d %d %d %d %d %d %d %d %d %d %d %d %d\n", &lines[i][0], &lines[i][1], &lines[i][2], &lines[i][3], &lines[i][4], &circles[i][0], &circles[i][1], &circles[i][2], &circles[i][3], &triangles[i][0], &triangles[i][1], &triangles[i][2], &triangles[i][3]);
 	}
 	draw();
 	fclose(fp);
@@ -31,12 +31,12 @@ Status save()
 {
 	Status st = FATAL;
 	FILE* fp;
-	errno_t err = fopen_s(&fp, "test.txt", "w");
+	errno_t err = fopen_s(&fp, "resource/test.txt", "w");
 	if (fp == NULL)
 		return st;
 	for (int i = 0; i < 10; i++)
 	{
-		fprintf_s(fp, "%d %d %d %d %d %d %d %d %d %d %d %d\n", lines[i][0], lines[i][1], lines[i][2], lines[i][3], lines[i][4], circles[i][0], circles[i][1], circles[i][2], triangles[i][0], triangles[i][1], triangles[i][2], triangles[i][3]);
+		fprintf_s(fp, "%d %d %d %d %d %d %d %d %d %d %d %d %d\n", lines[i][0], lines[i][1], lines[i][2], lines[i][3], lines[i][4], circles[i][0], circles[i][1], circles[i][2], circles[i][3], triangles[i][0], triangles[i][1], triangles[i][2], triangles[i][3]);
 	}
 	fclose(fp);
 	fp = NULL;
